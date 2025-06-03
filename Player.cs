@@ -1,15 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private int health;
 
-   
-    public GameObject fireballPrefab;
+    // New field to track coins collected
+    private int coins = 0;
 
-    // The point where fireballs are launched from (assign in Inspector)
+    public GameObject fireballPrefab;
     public Transform attackPoint;
 
     public void TakeDamage(int damage)
@@ -18,12 +16,19 @@ public class Player : MonoBehaviour
         print("Player's health: " + health);
     }
 
+    public void CollectCoins()
+    {
+        coins++;
+        print("Coins collected: " + coins);
+    }
+
     void Update()
     {
-        // Launch fireball on left click
+        // Fireball launch on left click
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(fireballPrefab, attackPoint.position, attackPoint.rotation);
         }
     }
 }
+
