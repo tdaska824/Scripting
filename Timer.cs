@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     public int minutes = 1;
     public float seconds = 0f;
+    public TextMeshProUGUI timerText;
 
     void Update()
     {
@@ -32,6 +34,8 @@ public class Timer : MonoBehaviour
                 }
             }
         }
+        int roundSeconds = Mathf.RoundToInt(seconds);
+        timerText.text = minutes + ":" + roundSeconds;
     }
 
     void RestartScene()
